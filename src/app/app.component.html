@@ -1,0 +1,60 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="row">
+
+  <div class="column">
+
+    <div style="text-align:center">
+      <h1>
+        Welcome to Cinema Management!
+      </h1>
+      <img width="300" alt="Logo" src="../assets/images/Cinema.jpg">
+    </div>
+
+  </div>
+
+  <div class="column">
+
+    <p>Here you can fetch <strong>cinema</strong> data: </p>
+
+    <h2><a href="#" (click)="onGetCinemaList()">Get All Cinemas</a></h2>
+
+    <ul>
+      <li *ngFor="let cinema of cinemaList">
+        <a href="#" (click)="onGetCinema(cinema.Id)"> {{ cinema.Name }}</a>
+      </li>
+    </ul>
+
+    <div *ngIf="cinemaDetails" class="details">
+      <h3>Selected Cinema Details: </h3>
+      <p>Id: {{ cinemaDetails.Id }}</p>
+      <p>Name: {{ cinemaDetails.Name }}</p>
+      <p>Address: {{ cinemaDetails.Address }}</p>
+    </div>
+
+  </div>
+
+  <div class="column">
+
+    <p>Here you can fetch <strong>projection</strong> data: </p>
+    <h2><a href="#" (click)="onGetUnstarted()">Get All unstarted projections</a></h2>
+
+    <ul>
+      <li *ngFor="let projection of unstartedProjections">
+        <a href="#" (click)="onGetProjection(projection.Id)">{{ projection.Id}} - {{ projection.StartDate }}</a>
+      </li>
+    </ul>
+
+    <div *ngIf="projectionDetails" class="details">
+      <h3>Selected Projection Details: </h3>
+      <p>Id: {{ projectionDetails.Id }}</p>
+      <p>Room Id: {{ projectionDetails.RoomId }}</p>
+      <p>Available Seats: {{ projectionDetails.AvailableSeatsCount }}</p>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<router-outlet></router-outlet>
