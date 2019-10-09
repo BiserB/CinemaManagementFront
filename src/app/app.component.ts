@@ -49,4 +49,11 @@ export class AppComponent {
         this.projectionDetails = res;
       });
   }
+
+  inspect(){
+    this.http.get("http://localhost:50715/api/projection/inspect")
+      .subscribe(res => {
+        console.log("Ispected", res);
+      });
+  }
 }
