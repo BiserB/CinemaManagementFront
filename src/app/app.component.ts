@@ -22,6 +22,13 @@ export class AppComponent {
   row: number = 0;
   column: number = 0;
 
+  reservationProjectionId: number = 0;
+  reservationRow: number = 0;
+  reservationColumn: number = 0;
+  reservationMsg = "";
+
+  canceledReservationMsg: string = "";
+
   constructor(private http: HttpClient) {
     let dateString = '2019-10-29T02:20:00' 
     this.startDate = new Date(dateString);
@@ -59,10 +66,13 @@ export class AppComponent {
       });
   }
 
-  inspect(){
-    this.http.get("http://localhost:50715/api/projection/inspect")
+  onMakeReservation(){
+
+    const model = { projectionId: this.reservationProjectionId, row: this.reservationRow, column: this.reservationColumn}
+
+    this.http.post(`http://localhost:50715/api/reservation/make`, model )
       .subscribe(res => {
-        console.log("Ispected..", res);
+        console.log("Reservation..", res);
       });
   }
 

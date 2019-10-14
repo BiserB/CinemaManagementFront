@@ -20,3 +20,8 @@
     margin-right: 30px;
     padding: 3px;
   }
+
+  .text-danger{
+    color: white;
+    background: red;
+  }

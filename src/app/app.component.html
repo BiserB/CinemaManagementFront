@@ -4,47 +4,62 @@
   <div class="column">
 
     <div style="text-align:center">
-      <h1>
-        Welcome to Cinema Management!
+      <h1 class="h3">
+        Cinema Management
       </h1>
-      <img width="300" alt="Logo" src="../assets/images/Cinema.jpg">
+      <img width="100" alt="Logo" src="../assets/images/Cinema.jpg">
     </div>
+    <hr>
+    <br>
 
-    <p>
-      <button (click)="inspect()">Inspect Reservations</button>
-    </p>
+    <form (ngSubmit)="onMakeReservation()">
+      <div class="form-group">
+        <label for="projectionId">Projection ID:</label>
+        <input id="projectionId" name="projectionId" type="number" min=1 max=1000 [(ngModel)]="reservationProjectionId" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="row">Row:</label>
+        <input id="row" name="row" type="number" min=1 max=1000 [(ngModel)]="reservationRow" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="column">Column:</label>
+        <input id="column" name="column" type="number" min=1 max=1000 [(ngModel)]="reservationColumn" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Make Reservation</button>
+      </div>
+    </form>
+    <p class="text-danger">{{ reservationMsg }}</p>
+    <hr>
+    <br>
 
     <form (ngSubmit)="onCancelReservation()">
-
       <div class="form-group">
         <label for="id">Reservation ID:</label>
-        <input id="id" name="id" type="number" [(ngModel)]="reservationId" class="form-control" required>
+        <input id="id" name="id" type="number" min=1 max=1000 [(ngModel)]="reservationId" class="form-control" required>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Cancel Reservation</button>
       </div>
-
     </form>
-
+    <p class="text-danger">{{ canceledReservationMsg }}</p>
     <hr>
     <br>
-    <form (ngSubmit)="onCreateProjection()">
 
+    <form (ngSubmit)="onCreateProjection()">
       <div class="form-group">
         <label for="roomId">Room ID:</label>
-        <input id="roomId" name="roomId" type="number" [(ngModel)]="roomId" class="form-control" required>
+        <input id="roomId" name="roomId" type="number" min=1 max=1000 [(ngModel)]="roomId" class="form-control" required>
       </div>
       <div class="form-group">
         <label for="movieId">MovieId:</label>
-        <input id="movieId" name="movieId" type="number" [(ngModel)]="movieId" class="form-control" required>
+        <input id="movieId" name="movieId" type="number" min=1 max=1000 [(ngModel)]="movieId" class="form-control" required>
       </div>
 
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Create Projection</button>
       </div>
-
     </form>
-
   </div>
 
   <div class="column">
